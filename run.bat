@@ -1,0 +1,1 @@
+java -jar askfmProfileGrabber-V1.1.jar
