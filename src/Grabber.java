@@ -1,6 +1,3 @@
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
 import java.io.*;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -77,7 +74,6 @@ public class Grabber {
             //Open a URL connection
             URLHandler uh = new URLHandler();
             uh.connect(this.profileURL);
-            Document doc = Jsoup.connect(this.profileURL).get();
 
             //Read HTML
             rawContent = uh.read();
@@ -164,19 +160,6 @@ public class Grabber {
                 String answer = "";
                 if (post.contains("streamItem_content")) {
                     answer = post.substring(post.indexOf("streamItem_content\">") + 20, post.indexOf("<p class=\"readMore\">"));
-
-                    //Link in der Antwort?
-					/*
-					do if (answer.contains("<a") && answer.contains("</a>")) {
-						String link = answer.substring(answer.indexOf("<a"));
-							   link = link.substring(link.indexOf(">") + 1);
-							   link = link.substring(0, link.lastIndexOf("</a>"));
-
-						String  start   = answer.substring(0, answer.indexOf("<a")),
-								end		= answer.substring(answer.indexOf("</a>") + 4);
-
-						answer = start + link + end;
-					} while(answer.contains("<a") && answer.contains("</a>"));*/
                 }
 
                 //Check if answer contains an image
